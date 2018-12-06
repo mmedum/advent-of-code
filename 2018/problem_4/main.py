@@ -43,11 +43,13 @@ def main():
         start_time = -1
         for line in lines:
             splits = line.split(' ')
+
             if len(splits) > 4:
                 name = int(splits[3][1:])
                 if name not in guards:
                     guards[name] = Guard(name)
                 current_guard = guards[name]
+
             guard_function = splits[2]
             minute = int(line[15:17])
             if guard_function == 'falls':
@@ -60,6 +62,20 @@ def main():
                     most_sleeping_guard = current_guard
         print(most_sleeping_guard)
         print(most_sleeping_guard.name * most_sleeping_guard.get_most_sleeping_minute()[0][0])
+
+        guard = -1
+        minute = (-1, -1)
+        for k, v in guards.items():
+            same_minute = v.get_most_sleeping_minute()
+            if not same_minute:
+                continue
+            same_minute = same_minute[0]
+            if same_minute[1] > minute[1]:
+                guard = k
+                minute = same_minute
+
+        print(f'Guard {guard} is most asleep on minute {minute}')
+        print(guard * minute[0])
 
 
 if __name__ == '__main__':
