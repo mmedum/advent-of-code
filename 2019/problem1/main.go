@@ -25,9 +25,16 @@ func main() {
 		moduleMass, err := strconv.Atoi(scanner.Text())
 		check(err)
 
-		fuel := (moduleMass / 3) - 2
-		totalFuelRequirement += fuel
+		totalFuelRequirement += calculateFuel(moduleMass)
 	}
 
-	fmt.Println("Total fuel reuqirement:", totalFuelRequirement)
+	fmt.Println("Total fuel requirement:", totalFuelRequirement)
+}
+
+func calculateFuel(mass int) int {
+	subMass := (mass / 3) - 2
+	if subMass <= 0 {
+		return 0
+	}
+	return subMass + calculateFuel(subMass)
 }
