@@ -16,19 +16,14 @@ func main() {
 	for i := 0; i < len(data)-1; i++ {
 		element := strings.Split(data[i], " ")
 		rangeElement := strings.Split(string(element[0]), "-")
-		min, _ := strconv.Atoi(string(rangeElement[0]))
-		max, _ := strconv.Atoi(string(rangeElement[1]))
+		pos1, _ := strconv.Atoi(string(rangeElement[0]))
+		pos2, _ := strconv.Atoi(string(rangeElement[1]))
 		char := string(element[1][0])
 		password := string(element[2])
 
-		count := 0
-		for _, c := range password {
-			if string(c) == char {
-				count++
-			}
-		}
-
-		if count >= min && count <= max {
+		if string(password[pos1-1]) == char && string(password[pos2-1]) != char {
+			valid++
+		} else if string(password[pos1-1]) != char && string(password[pos2-1]) == char {
 			valid++
 		}
 	}
