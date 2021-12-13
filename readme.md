@@ -1,2 +1,3 @@
-# advent_of_code
+# Advent of Code
+
 Some solutions for advent of code
