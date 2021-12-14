@@ -1,0 +1,7 @@
+[package]
+name = "rust"
+version = "0.1.0"
+authors = ["Mark Medum Bundgaard <mmedum@gmail.com>"]
+edition = "2021"
+
+[dependencies]
